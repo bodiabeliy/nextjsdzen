@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 export default function Home() {
   const [socket_state, setSocket_state] = useState('try connecting...');
   const [socket, setSocket] = useState(null);
-  const [userCounter, setUserCounter] = useState(0);
+  const [userCounter, setUserCounter] = useState(1);
 
   useEffect(() => {
     fetch('api/socket');
