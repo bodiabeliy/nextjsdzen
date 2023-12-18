@@ -1,6 +1,8 @@
+"use client"
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-import Navbar from "../widgets/Navbar/Navbar"
+import Navbar from '../widgets/Navbar/Navbar';
+
 
 export default function Home() {
   const [socket_state, setSocket_state] = useState('try connecting...');
