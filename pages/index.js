@@ -1,33 +1,22 @@
-"use client"
-import { useEffect, useState } from 'react';
-import io from 'socket.io-client';
-import Navbar from '../widgets/Navbar/Navbar';
+import dynamic from 'next/dynamic'
+import Loader from '../widgets/Loader/loading';
+ 
+const HomeScreen= dynamic(() => new Promise((resolve) => {
+  // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!! ДЕЛАЕМ ДЛЯ ИММИТАЦИИ ЗАГРУЗКИ ПРЕЛОАДЕРА!
+  setTimeout(() => resolve(import('../widgets/HomeScreen/HomeScreen')), 1500);
+}), {
+  loading: () => <Loader />,
+  ssr: false,
+})
+
 
 
 export default function Home() {
-  const [socket_state, setSocket_state] = useState('try connecting...');
-  const [socket, setSocket] = useState(null);
-  const [userCounter, setUserCounter] = useState(1);
-
-  useEffect(() => {
-    fetch('api/socket');
-    setSocket(io());
-  }, []);
-
-
-    if (socket) {
-      socket.on('connect', () => {
-        socket.on("users", (n)=> {
-          setUserCounter(n)
-      });
-          
-        setSocket_state('connected successfully 👍');
-      });
-    }
+ 
   return (
     <>
       <div>
-        <h1>socket state: {userCounter}</h1>
+        <HomeScreen />
       </div>
     </>
   );

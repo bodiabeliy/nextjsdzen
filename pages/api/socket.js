@@ -11,7 +11,6 @@ export default function SocketHandler(req, res) {
           socket.broadcast.emit("users", (socket.client.conn.server.clientsCount)/2);
 
         });
-;
     });
   }
   res.end();

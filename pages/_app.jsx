@@ -13,8 +13,10 @@ export default function App({ Component, pageProps }) {
     return  (
       <>
       <Navbar />
+      <div className="flex">
       <SideBar />
       <Component {...pageProps} />
+      </div>
       </>
     )
     

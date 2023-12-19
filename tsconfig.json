@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "widgets/Navbar/Navbar.ts", "pages/_app.js", "pages/_document.jsx"  ],
+, "widgets/Navbar/Navbar.ts", "pages/_app.jsx", "pages/_document.jsx", "pages/products/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]
