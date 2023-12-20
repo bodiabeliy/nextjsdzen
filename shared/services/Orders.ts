@@ -1,0 +1,16 @@
+
+import { useDispatch } from 'react-redux';
+import http from './api/index';
+import { gettingOrdersSuccess } from '../providers/reducers/OrderSlice';
+
+export default async function getOrders() {
+    const dispatch = useDispatch()
+    try {        
+        const response = await http.get(`api/orders`);
+        dispatch(gettingOrdersSuccess(response.data))
+        
+    } catch (error) {
+       throw Error(`heppend error by getting orders!  ${error}`) 
+    }
+     
+ }
