@@ -1,5 +1,8 @@
 import dynamic from 'next/dynamic'
 import Loader from "../../widgets/Loader/loading"
+
+import getOrders from "../../shared/services/Orders";
+
   
 const OrderScreen= dynamic(() => new Promise((resolve) => {
   // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!! ДЕЛАЕМ ДЛЯ ИММИТАЦИИ ЗАГРУЗКИ ПРЕЛОАДЕРА!
@@ -10,6 +13,8 @@ const OrderScreen= dynamic(() => new Promise((resolve) => {
 })
 
 const Orders = () => {
+  
+  
     return ( 
         <OrderScreen />
     );

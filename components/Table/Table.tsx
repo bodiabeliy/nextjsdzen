@@ -1,30 +1,23 @@
 import Table from 'react-bootstrap/Table';
 
+import BootstrapTable from 'react-bootstrap-table-next';
 
-const TableComponent = () => {
+
+interface TableProps {
+  tableColumns:any[];
+  tableData:any[]
+}
+
+const TableComponent = (props:TableProps) => {
+    const {tableColumns, tableData} = props
     return (
-        <Table responsive="md">
-          <tbody>
-            <tr>
-              <td>1</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-            <tr>
-              <td>2</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-            <tr>
-              <td>3</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-          </tbody>
-        </Table>
+
+        <BootstrapTable 
+          keyField='id' 
+          data={ tableData } 
+          columns={ tableColumns }
+          rowClasses={"w-[300px] p-2 rounded-xl border-2 border-gray-300 m-4"}
+         />
       );
 }
  

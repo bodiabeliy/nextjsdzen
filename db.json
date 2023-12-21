@@ -3,11 +3,11 @@
         {
           "id": 1,
           "title": "Order 1",
-          "date": "2017-06-29 12:09:33",
+          "date": "2017-08-09 12:09:33",
           "description": "desc",
           "products":[
             {
-                "id": 1,
+                "id": 11,
                 "serialNumber": 1234,
                 "isNew": 1,
                 "photo": "pathToFile.jpg",
@@ -30,24 +30,43 @@
         {
           "id": 2,
           "title": "Order 2",
-          "date": "2017-06-29 12:09:33",
+          "date": "2016-01-23 14:09:33",
           "description": "desc",
           "products": [
             {
-                "id": 2,
+                "id": 22,
                 "serialNumber": 1234,
                 "isNew": 1,
                 "photo": "pathToFile.jpg",
-                "title": "Product 1",
+                "title": "Asus Zen 15",
                 "type": "Monitors",
-                "specification": "Specification 1",
+                "specification": "NoteBook 1",
                 "guarantee": {
-                  "start": "2017-06-29 12:09:33",
+                  "start": "2017-09-29 12:09:33",
                   "end": "2017-06-29 12:09:33"
                 },
                 "price": [
-                  {"value": 100, "symbol": "USD", "isDefault": 0},
-                  {"value": 2600, "symbol": "UAH", "isDefault": 1}
+                  {"value": 890, "symbol": "USD", "isDefault": 0},
+                  {"value": 27890, "symbol": "UAH", "isDefault": 1}
+                ],
+                "order": 2,
+                "date": "2017-06-29 12:09:33"
+            },
+            {
+                "id": 23,
+                "serialNumber": 34,
+                "isNew": 0,
+                "photo": "pathToFile.jpg",
+                "title": "MackBook Pro",
+                "type": "NoteBook",
+                "specification": "Specification 2",
+                "guarantee": {
+                  "start": "2017-03-29 12:09:33",
+                  "end": "2017-06-29 12:09:33"
+                },
+                "price": [
+                  {"value": 1600, "symbol": "USD", "isDefault": 0},
+                  {"value": 57800, "symbol": "UAH", "isDefault": 1}
                 ],
                 "order": 2,
                 "date": "2017-06-29 12:09:33"
