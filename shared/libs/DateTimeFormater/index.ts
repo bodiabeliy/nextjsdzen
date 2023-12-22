@@ -48,7 +48,6 @@ export const DateTimeFormmater =(date:any):any => {
     let transformedDate = parts[2] + '/' + monthNuberToMonthString(parts[1]) + '/' + parts[0];
     
     let monthByMonths =parts[1]+"/12"
-    console.log("transform:", {transformedDate, monthByMonths});
     
     return {transformedDate, monthByMonths}
 }
