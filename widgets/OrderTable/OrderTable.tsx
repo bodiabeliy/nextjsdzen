@@ -25,6 +25,7 @@ import { ArrowRightIcon } from "../../components/Icons/arrow-right";
 import { DateTimeFormmater } from "../../shared/libs/DateTimeFormater";
 import { sumCalculator } from "../../shared/libs/currenciesCalculator";
 import TableHeader from "../TableHeader/TableHeader";
+import { PlusIcon } from "../../components/Icons/plus";
 
 const OrderTable = () => {
   const dispatch = useAppDispatch();
@@ -230,7 +231,18 @@ const OrderTable = () => {
   };
   return (
     <>
-      <div className={`ml-40 mt-20 ${isExpendMenu && "flex"}`}>
+      <div className={`ml-40 mt-20`}>
+        <Button>
+            <div className="flex items-center mb-10">
+            <Button className="bg-[#8bc34a] rounded-full w-[25px] h-[25px] mr-2 p-4 border-4 border-[#87bd4a]">
+                   <PlusIcon className={"scale-125 translate-y-[-10px] translate-x-[-12px]"} fill={"white"} width={32} height={32} />
+            </Button>
+            <h2 className="font-semibold text-2xl">Orders: / {orders.length}</h2>
+
+            </div>
+        </Button>
+
+        <div className={`${isExpendMenu && "flex"}`}>
         <OrderTableBody tableColumns={columns} tableData={orders} />
         {isExpendMenu && (
           <div className="expendMenu">
@@ -243,6 +255,7 @@ const OrderTable = () => {
             />
           </div>
         )}
+        </div>
       </div>
     </>
   );

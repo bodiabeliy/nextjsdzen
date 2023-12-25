@@ -6,11 +6,13 @@ import User, { Product, ProductPrice } from '../types/index';
 
 export interface ProductState {
  products:any[]
+ filteredProductsLength:number
 
 }
 
 const initialState: ProductState = {
-  products:[]
+  products:[],
+  filteredProductsLength:0
 }
 
 export const productState = createSlice({
@@ -20,15 +22,18 @@ export const productState = createSlice({
   reducers: {
     gettingProductsSuccess: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload
+    },
+    setFilteredProductsLength: (state, action: PayloadAction<number>) => {
+      state.filteredProductsLength = action.payload
     }
-    
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { gettingProductsSuccess} = productState.actions
+export const { gettingProductsSuccess, setFilteredProductsLength} = productState.actions
 
 export const ProductSelector = (state:RootState) => state.ProductReducer.products
+export const FilteredProductsLengthSelector = (state:RootState) => state.ProductReducer.filteredProductsLength
 
 
 

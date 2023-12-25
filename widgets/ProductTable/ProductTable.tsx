@@ -1,17 +1,22 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import OrderTableBody from "../../components/Table/Table";
-import { ProductSelector } from "../../shared/providers/reducers/ProductSlice";
-import { useEffect } from "react";
+import { FilteredProductsLengthSelector, ProductSelector, setFilteredProductsLength } from "../../shared/providers/reducers/ProductSlice";
+import { useCallback, useEffect, useState } from "react";
 import getProducts from "../../shared/services/Products";
 import { DateTimeFormmater } from "../../shared/libs/DateTimeFormater";
 
 import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
+import { Button } from "../../components/Button/Button";
+import { PlusIcon } from "../../components/Icons/plus";
 
 
 const ProductTable = () => {
   const dispatch = useDispatch();
   const products = useSelector(ProductSelector);
+  const filteredProductsCounter = useSelector(FilteredProductsLengthSelector)
+  console.log("filteredProductsCounter", filteredProductsCounter);
+  
   const selectOptions = {
     "NoteBook": 'NoteBook',
     "Monitors": 'Monitors'
@@ -27,7 +32,8 @@ const ProductTable = () => {
       classes: "w-[80px] p-2",
       formatter: (row: string) => <>{row}</>,
       filter: selectFilter({
-        options: selectOptions
+        options: selectOptions,
+        onFilter: filterVal => console.log(`Filter Value: ${filterVal}`)
       })
     },
     {
@@ -83,10 +89,24 @@ const ProductTable = () => {
       getProducts(dispatch);
     }
   }, []);
+
+  const afterFilter=(newResult:any[])=> {    
+    dispatch(setFilteredProductsLength(newResult.length))
+  }
+
+  
   return (
     <>
       <div className={`ml-40 mt-20 $`}>
-        <OrderTableBody tableColumns={columns} tableData={products} filter={filterFactory()} />
+      <Button>
+            <div className="flex items-center mb-10">
+            <Button className="bg-[#8bc34a] rounded-full w-[25px] h-[25px] mr-2 p-4 border-4 border-[#87bd4a]">
+                   <PlusIcon className={"scale-125 translate-y-[-10px] translate-x-[-12px]"} fill={"white"} width={32} height={32} />
+            </Button>
+            <h2 className="font-semibold text-2xl">Products: / {filteredProductsCounter > 0? filteredProductsCounter:products.length}</h2>
+            </div>
+        </Button>
+        <OrderTableBody tableColumns={columns} tableData={products} filter={filterFactory({afterFilter})} />
       </div>
     </>
   );
