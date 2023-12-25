@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from 'next/router';
 import Image from 'next/image'
 import Logo from "../../public/logo.png"
 import { useEffect, useState } from 'react';
@@ -8,9 +9,12 @@ import io from 'socket.io-client';
 
 const Navbar =() => {
 
+  const {locale, locales, push} = useRouter()
     const [currentTime, setCurrentTime] = useState("")
     const [socket, setSocket] = useState(null);
     const [userCounter, setUserCounter] = useState(1);
+
+
   
     useEffect(() => {
       fetch('api/socket');
@@ -35,9 +39,17 @@ const Navbar =() => {
             }))
         }, 1000)
     })
+
+
+    const changeLanguge = (setLang) => {
+      push("/", undefined, {
+        locale:setLang
+      })
+    }
     return ( 
         <>
         <div className="w-full h-[70px] flex shadow items-center">
+
             <div className="flex w-[1400px] justify-betwwen m-auto items-center">
                 <div className="w-full ">
                   <div className="flex items-center uppercase text-[#7cb342]">
@@ -55,6 +67,8 @@ const Navbar =() => {
                         {"sessions: " + userCounter}
                     </div>
                 </div>
+                <span className='font-semibold w-[100px] text-right'> {locale}</span>
+
             </div>
         </div>
         </>
