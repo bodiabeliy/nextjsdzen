@@ -1,38 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**Локальне розгортання проекту:**
+Для розгортання необхідно виконати наступні дії:
 
-## Getting Started
+1) клонувати даний проект;
+2) Перейти в папку nextjs-socket.io та встановити модулі за допомогою команди npm і --force;
+3) Запустити фейкове бекенд API командою json-server --watch db.json --port 4000;
+4) Запустити проект в режимі девелопменту командою npm run dev;
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### User Guide:
+- При першому вході на платформу, користувач потрапляє на головну сторінку, на якій розміщено наступну інформацію:
+1) Навігаційна панель (Navbar), на якій зображено поточну дату та час, кількість користувачів що одночасно знаходяться на платфомі та надпис поточної мови;
+2) Бокова панель (Sidebar) - список посилань для переходу на сторінки замовлень та продуктів;
+3) Головна сторінка - основний структурний блок взаємодії з користувачем;
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- На голоіній сторінці (HomeScreen) представлено назву даної сторінки.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- При натисканні на посилання з відповідною назвою сторінки (Products/Orders) - користувач потрапляє на дану сторінку.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

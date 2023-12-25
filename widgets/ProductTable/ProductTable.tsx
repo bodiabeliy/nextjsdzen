@@ -9,14 +9,17 @@ import { DateTimeFormmater } from "../../shared/libs/DateTimeFormater";
 import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
 import { Button } from "../../components/Button/Button";
 import { PlusIcon } from "../../components/Icons/plus";
+import { useTranslation } from "next-i18next";
 
 
 const ProductTable = () => {
   const dispatch = useDispatch();
   const products = useSelector(ProductSelector);
   const filteredProductsCounter = useSelector(FilteredProductsLengthSelector)
-  console.log("filteredProductsCounter", filteredProductsCounter);
+
   
+  const {t} = useTranslation("products")
+
   const selectOptions = {
     "NoteBook": 'NoteBook',
     "Monitors": 'Monitors'
@@ -103,7 +106,7 @@ const ProductTable = () => {
             <Button className="bg-[#8bc34a] rounded-full w-[25px] h-[25px] mr-2 p-4 border-4 border-[#87bd4a]">
                    <PlusIcon className={"scale-125 translate-y-[-10px] translate-x-[-12px]"} fill={"white"} width={32} height={32} />
             </Button>
-            <h2 className="font-semibold text-2xl">Products: / {filteredProductsCounter > 0? filteredProductsCounter:products.length}</h2>
+            <h2 className="font-semibold text-2xl">{t("products")}: / {filteredProductsCounter > 0? filteredProductsCounter:products.length}</h2>
             </div>
         </Button>
         <OrderTableBody tableColumns={columns} tableData={products} filter={filterFactory({afterFilter})} />
@@ -111,5 +114,6 @@ const ProductTable = () => {
     </>
   );
 };
+
 
 export default ProductTable;
