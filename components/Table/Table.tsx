@@ -1,8 +1,5 @@
-import Table from 'react-bootstrap/Table';
-
+"use client"
 import BootstrapTable from 'react-bootstrap-table-next';
-import { ReactNode } from 'react';
-
 
 interface TableProps {
  
@@ -11,10 +8,11 @@ interface TableProps {
   selectRow?:any
   caption?:JSX.Element
   classes?:string
+  filter?:any
 }
 
 const TableComponent = (props:TableProps) => {
-    const {tableColumns, tableData, selectRow, caption, classes} = props
+    const {tableColumns, tableData, selectRow, caption, classes, filter} = props
     
     return (
 
@@ -27,6 +25,7 @@ const TableComponent = (props:TableProps) => {
           rowClasses={"p-2 rounded-xl border-2 border-gray-300 m-4"}
           selectRow={ selectRow }
           caption={caption}
+          filter={filter}
          />
          
         </>

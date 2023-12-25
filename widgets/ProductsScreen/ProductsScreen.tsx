@@ -1,6 +1,8 @@
+import ProductTable from "../ProductTable/ProductTable";
+
 const ProductsScreen = () => {
     return ( 
-        <>ProductsScreen</>
+        <ProductTable />
      );
 }
  

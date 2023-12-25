@@ -14,3 +14,6 @@
 .detailedOrderTable >tbody >tr:first-child {
     border: none;
 }
+.sr-only {
+    display: none;
+}

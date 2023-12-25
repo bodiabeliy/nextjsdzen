@@ -12,8 +12,8 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "widgets/Navbar/Navbar.ts", "pages/_app.jsx", "pages/_document.jsx", "pages/products/index.jsx"  ],
+, "pages/_app.jsx", "pages/_document.jsx", "pages/products/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -4,12 +4,11 @@ import Logo from "../../public/logo.png"
 import { useEffect, useState } from 'react';
 
 import Clock from "../../public/clock.png"
-import { io } from 'socket.io-client';
+import io from 'socket.io-client';
 
 const Navbar =() => {
 
     const [currentTime, setCurrentTime] = useState("")
-    const [socket_state, setSocket_state] = useState('try connecting...');
     const [socket, setSocket] = useState(null);
     const [userCounter, setUserCounter] = useState(1);
   
@@ -21,12 +20,11 @@ const Navbar =() => {
   
       if (socket) {
         socket.on('connect', () => {
-          socket.on("users", (n:number)=> {
+          socket.on("users", (n)=> {
             setUserCounter(n)
         });
-            
-          setSocket_state('connected successfully 👍');
-        });
+         
+        })
       }
 
     useEffect(() => {
