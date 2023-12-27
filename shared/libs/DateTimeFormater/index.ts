@@ -41,7 +41,7 @@ const monthNuberToMonthString = (currentMonthNumber:string):string |undefined =>
         } 
     }
 }
-export const DateTimeFormmater =(date:any):any => {
+export const DateTimeFormmater =(date:string):any => {
     let formatDate= date.replaceAll("-","/").split(" ")[0]
 
     let parts = formatDate.split('/');

@@ -3,9 +3,10 @@ import { createPortal } from 'react-dom';
 import ModalContent from "../Modal/Modal";
 import { Button } from '../Button/Button';
 import TrashIcon from "../Icons/trash";
+import Order from '../../shared/providers/types';
 
 interface PoprtalProps {
-    order:any
+    order:Order
 }
 export default function Portal(props:PoprtalProps) {
     const {order} = props
@@ -14,7 +15,7 @@ export default function Portal(props:PoprtalProps) {
   return (
     <>
       <Button onClick={() => setShowModal(true)}>
-      <TrashIcon className={""} fill={"#90a4ae"} width={20} height={20} />
+      <TrashIcon className={"trashIcon"} fill={"#90a4ae"} width={20} height={20} />
       </Button>
       {(showModal && order) && createPortal(
         <ModalContent removeData={order} onClose={() => setShowModal(false)} />,

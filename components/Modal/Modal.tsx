@@ -1,8 +1,14 @@
+import Order from "../../shared/providers/types";
 import { Button } from "../Button/Button";
 import TrashIcon from "../Icons/trash";
 
 
-export default function ModalContent({ onClose, removeData }: any,) {
+interface ModalProps {
+  onClose:()=> void,
+  removeData:Order
+}
+
+export default function ModalContent({ onClose, removeData }: ModalProps) {
   return (
     <div className="flex items-center absolute top-0 bottom-0 right-0 left-0 bg-modalOverlay justify-center">
       <div className="flex flex-col bg-white justify-between w-[700px] h-[300px] ">

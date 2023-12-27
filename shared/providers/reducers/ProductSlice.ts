@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { AppDispatch, RootState } from '../store'
-import User, { Product, ProductPrice } from '../types/index';
+import { RootState } from '../store'
+import { Product } from '../types/index';
 
 
 export interface ProductState {
- products:any[]
+ products:Product[]
  filteredProductsLength:number
 
 }

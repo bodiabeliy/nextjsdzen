@@ -14,6 +14,7 @@ export const Button: FC<ButtonProps> = (props) => {
     <>
       {isMounted && (
         <button className={className} 
+        {...otherProps}
         >
           {children}
         </button>

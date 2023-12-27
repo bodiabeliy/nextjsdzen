@@ -1,5 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
-import Navbar from '../widgets/Navbar/Navbar'
+import { Html, Head, NextScript } from 'next/document'
 
 export default function Document() {
   return (

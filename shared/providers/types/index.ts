@@ -1,6 +1,4 @@
 import { CSSProperties } from "react";
-import { TableColumnFilterProps } from "react-bootstrap-table-next";
-import { SelectFilterProps } from "react-bootstrap-table2-filter";
 
 export default interface Order {
   id:number;
@@ -30,6 +28,7 @@ interface DatePeriod {
 }
 
 export interface ProductPrice {
+  [x: string]: any; // for forEach
   value:number;
   symbol:string;
   isDefault:number
@@ -47,5 +46,4 @@ export interface ColumnsProps {
   events?:{
     onClick: (e: React.FormEvent<HTMLFormElement>, column: any, columnIndex: number, row: any, rowIndex: number) => void
   }
-
 }

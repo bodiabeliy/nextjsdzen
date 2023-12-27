@@ -5,14 +5,15 @@ import Logo from "../../public/logo.png"
 import { useEffect, useState } from 'react';
 
 import Clock from "../../public/clock.png"
-import io from 'socket.io-client';
+import io, { Socket } from 'socket.io-client';
+import { DefaultEventsMap } from 'socket.io/dist/typed-events';
 
 const Navbar =() => {
 
   const {locale, locales, push} = useRouter()
-    const [currentTime, setCurrentTime] = useState("")
-    const [socket, setSocket] = useState(null);
-    const [userCounter, setUserCounter] = useState(1);
+    const [currentTime, setCurrentTime] = useState<string>("")
+    const [socket, setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap>| null>(null);
+    const [userCounter, setUserCounter] = useState<number>(1);
 
 
   
@@ -24,7 +25,7 @@ const Navbar =() => {
   
       if (socket) {
         socket.on('connect', () => {
-          socket.on("users", (n)=> {
+          socket.on("users", (n:number)=> {
             setUserCounter(n)
         });
          
@@ -41,7 +42,7 @@ const Navbar =() => {
     })
 
 
-    const changeLanguge = (setLang) => {
+    const changeLanguge = (setLang:string) => {
       push("/", undefined, {
         locale:setLang
       })

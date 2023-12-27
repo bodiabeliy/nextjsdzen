@@ -26,7 +26,8 @@ import { DateTimeFormmater } from "../../shared/libs/DateTimeFormater";
 import { sumCalculator } from "../../shared/libs/currenciesCalculator";
 import TableHeader from "../TableHeader/TableHeader";
 import { PlusIcon } from "../../components/Icons/plus";
-import { ColumnsProps } from "../../shared/providers/types";
+import Order, { ColumnsProps, Product, ProductPrice } from "../../shared/providers/types";
+import { SelectRowProps } from "react-bootstrap-table-next";
 
 const OrderTable = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ const OrderTable = () => {
   
   const [isExpendMenu, setIsExpendMenu] = useState<boolean>(false);
 
-  const [formatDateTime, setFormatDateTime] = useState("");
+  const [formatDateTime, setFormatDateTime] = useState<string>("");
   const columns:ColumnsProps[] = [
     {
       dataField: "title",
@@ -63,7 +64,7 @@ const OrderTable = () => {
     {
       dataField: "products",
       classes: "w-[80px] p-2",
-      formatter: (row: any) => (
+      formatter: (row: string) => (
         <>
           <div className="">
             <p className="text-xl">{row.length}</p>
@@ -77,7 +78,7 @@ const OrderTable = () => {
       dataField: "date",
       classes: "w-[180px] p-2",
       align: "center",
-      formatter: (row: any) => (
+      formatter: (row: string) => (
         <>
           <div className="flex flex-col">
             <span className="text-xs">
@@ -94,11 +95,11 @@ const OrderTable = () => {
       classes: `w-[200px] p-2 ${isExpendMenu == true ? "hidden" : "block"}`,
       align: "center",
       formatter: (row: any) =>
-        row.map((x: any, indx: number) => {
+        row.map((x: Product, indx: number) => {
           if (indx == 0) {
             return (
               <div key={indx}>
-                {x.price.map((price: any) => {
+                {x.price.map((price: ProductPrice) => {
                   return (
                     <div className="" key={price.symbol}>
                       {price.symbol && (
@@ -144,9 +145,9 @@ const OrderTable = () => {
           e: any,
           column: any,
           columnIndex: any,
-          row: any,
+          row: Order,
           rowIndex: number
-        ) => {
+        ) => {          
           expendMenu(row);
         },
       },
@@ -217,7 +218,7 @@ const OrderTable = () => {
     },
   ];
 
-  const selectRow = {
+  const selectRow:SelectRowProps<any> = {
     mode: "radio",
     clickToSelect: true,
   };
@@ -232,7 +233,7 @@ const OrderTable = () => {
     }
   }, []);
 
-  const expendMenu = (rowData: any) => {
+  const expendMenu = (rowData: Order) => {
     dispatch(getProductsByOrderSuccess(rowData.products));
     dispatch(getOrderUnit(rowData));
     setIsExpendMenu((isExpendMenu) => !isExpendMenu);

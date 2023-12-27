@@ -10,7 +10,7 @@ import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
 import { Button } from "../../components/Button/Button";
 import { PlusIcon } from "../../components/Icons/plus";
 import { useTranslation } from "next-i18next";
-import { ColumnsProps } from "../../shared/providers/types";
+import { ColumnsProps, Product, ProductPrice } from "../../shared/providers/types";
 
 
 const ProductTable = () => {
@@ -69,7 +69,7 @@ const ProductTable = () => {
       classes: "w-[120px] p-2",
       formatter: (row: any) => (
         <>
-          {row.map((rowData: any, indx: number) => {
+          {row.map((rowData: ProductPrice, indx: number) => {
               return (
                 <div key={indx}>
                   <div className=""  key={rowData.symbol}>
@@ -97,7 +97,7 @@ const ProductTable = () => {
     }
   }, []);
 
-  const afterFilter=(newResult:any[])=> {    
+  const afterFilter=(newResult:Product[])=> {    
     dispatch(setFilteredProductsLength(newResult.length))
   }
 

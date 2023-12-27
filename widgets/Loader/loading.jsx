@@ -1,5 +1,3 @@
-import useIsElementMounted from "../../shared/hooks/isElementMounted";
-
 const Loader = () => {
   return (
     <div className="flex items-center absolute top-0 bottom-0 right-0 left-0 justify-center">

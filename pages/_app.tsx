@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { ReactNode, useRef } from 'react'
 import { Provider } from 'react-redux'
 import {store, wrapper} from "../shared/providers/store"
 
@@ -7,9 +7,15 @@ import Navbar from "../widgets/Navbar/Navbar";
 import SideBar from "../widgets/Sidebar/Sidebar";
 
 import "../styles/globals.css";
+import { AnyAction, Store } from 'redux';
 
- function App({ Component, pageProps }) {
-  const storeRef = useRef()
+interface AppProps {
+  Component:React.ElementType,
+  pageProps:any
+}
+
+ function App({ Component, pageProps }:AppProps) {
+  const storeRef = useRef<Store<unknown, AnyAction>|null>(null)
   if (!storeRef.current) {
     storeRef.current = store()
   }

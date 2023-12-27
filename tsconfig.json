@@ -12,8 +12,8 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
@@ -21,8 +21,10 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/_app.jsx", "pages/_document.jsx" ],
+    "**/*.tsx",
+    "pages/_app.jsx",
+    "pages/_document.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]

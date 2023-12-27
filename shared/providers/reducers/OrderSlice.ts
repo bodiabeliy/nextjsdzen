@@ -3,19 +3,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-import Order from '../types/index';
+import Order, { Product } from '../types/index';
 
 
 export interface OrderState {
  orders:Order[]
- productsByOrder:any[]
- orderTitle:any
+ productsByOrder:Product[]
+ orderTitle:Order
 }
 
 const initialState: OrderState = {
   orders:[], 
   productsByOrder:[],
-  orderTitle:""
+  orderTitle:{
+    id: 0,
+    title: '',
+    date: '',
+    description: '',
+    products: [],
+    totalSum: 0
+  }
 
 }
 
@@ -27,10 +34,10 @@ export const orderState = createSlice({
     gettingOrdersSuccess: (state, action: PayloadAction<Order[]>) => {      
        state.orders = action.payload
     },
-    getProductsByOrderSuccess: (state, action:any) => {
+    getProductsByOrderSuccess: (state, action:PayloadAction<Product[]>) => {
       state.productsByOrder = action.payload
     },
-    getOrderUnit: (state, action: PayloadAction<any>) => {      
+    getOrderUnit: (state, action: PayloadAction<Order>) => {      
       state.orderTitle = action.payload
     }
   },

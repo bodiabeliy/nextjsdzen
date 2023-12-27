@@ -1,12 +1,12 @@
-"use client"
-import BootstrapTable from 'react-bootstrap-table-next';
-import useIsElementMounted from '../../shared/hooks/isElementMounted';
+import BootstrapTable, { SelectRowProps } from 'react-bootstrap-table-next';
+import Order, { ColumnsProps, Product } from '../../shared/providers/types';
+import { FilterFactoryProps } from 'react-bootstrap-table2-filter';
 
 interface TableProps {
  
-  tableColumns:any[];
-  tableData:any[]
-  selectRow?:any
+  tableColumns:ColumnsProps[];
+  tableData:Order[] |Product[]
+  selectRow?:SelectRowProps<any> 
   caption?:JSX.Element
   classes?:string
   filter?:any

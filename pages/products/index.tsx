@@ -1,0 +1,26 @@
+
+import dynamic from 'next/dynamic'
+import Loader from "../../widgets/Loader/loading"
+  
+  
+interface ProductScreenProps {
+  pageTitle?:string;
+}
+const ProductScreen= dynamic<ProductScreenProps>(() => new Promise((resolve) => {
+  // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!! ДЕЛАЕМ ДЛЯ ИММИТАЦИИ ЗАГРУЗКИ ПРЕЛОАДЕРА!
+  setTimeout(() => resolve(import('../../widgets/ProductsScreen/ProductsScreen')), 1500);
+}), {
+  loading: () => <Loader />,
+  ssr: false,
+})
+const Products = () => {
+    
+    return ( 
+
+        <>
+        <ProductScreen />
+        </>
+     );
+}
+ 
+export default Products;
