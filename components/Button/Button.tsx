@@ -1,24 +1,23 @@
-import {ButtonHTMLAttributes, FC} from "react";
+import { ButtonHTMLAttributes, FC, useEffect, useState } from "react";
+import useIsElementMounted from "../../shared/hooks/isElementMounted";
 
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
-    className?: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-    const {
-        className,
-        children,
-        ...otherProps
-    } = props;
+  const isMounted = useIsElementMounted();
 
-    return (
-        <button
-            className={className}
-            {...otherProps}
+  const { className, children, ...otherProps } = props;
+
+  return (
+    <>
+      {isMounted && (
+        <button className={className} 
         >
-            {children}
+          {children}
         </button>
-    );
+      )}
+    </>
+  );
 };
-

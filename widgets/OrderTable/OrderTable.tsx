@@ -26,24 +26,26 @@ import { DateTimeFormmater } from "../../shared/libs/DateTimeFormater";
 import { sumCalculator } from "../../shared/libs/currenciesCalculator";
 import TableHeader from "../TableHeader/TableHeader";
 import { PlusIcon } from "../../components/Icons/plus";
+import { ColumnsProps } from "../../shared/providers/types";
 
 const OrderTable = () => {
   const dispatch = useAppDispatch();
   const orders = useSelector(OrderSelector);
   const orderData = useSelector(OrderUnitSelector);
   const products = useSelector(ProductsByOrderSelector);
-
+  
   const [isExpendMenu, setIsExpendMenu] = useState<boolean>(false);
 
   const [formatDateTime, setFormatDateTime] = useState("");
-  const columns = [
+  const columns:ColumnsProps[] = [
     {
       dataField: "title",
       classes: `w-[300px] p-2 ${isExpendMenu == true ? "hidden " : "block"}`,
+      text:""
     },
 
     {
-      dataField: "products",
+      dataField: "detail",
       classes: "w-[80px] p-2",
       formatter: () => (
         <>
@@ -56,6 +58,7 @@ const OrderTable = () => {
           />
         </>
       ),
+      text:""
     },
     {
       dataField: "products",
@@ -64,10 +67,11 @@ const OrderTable = () => {
         <>
           <div className="">
             <p className="text-xl">{row.length}</p>
-            <span>Protucts</span>
+            <span>Products</span>
           </div>
         </>
       ),
+      text:""
     },
     {
       dataField: "date",
@@ -83,6 +87,7 @@ const OrderTable = () => {
           </div>
         </>
       ),
+      text:""
     },
     {
       dataField: "products",
@@ -92,7 +97,7 @@ const OrderTable = () => {
         row.map((x: any, indx: number) => {
           if (indx == 0) {
             return (
-              <>
+              <div key={indx}>
                 {x.price.map((price: any) => {
                   return (
                     <div className="" key={price.symbol}>
@@ -107,10 +112,11 @@ const OrderTable = () => {
                     </div>
                   );
                 })}
-              </>
+              </div>
             );
           }
         }),
+        text:""
     },
     {
       dataField: "action",
@@ -127,6 +133,7 @@ const OrderTable = () => {
         },
       },
       formatter: () => <Portal order={orderData} />,
+      text:""
     },
     {
       dataField: "expendMore",
@@ -161,10 +168,11 @@ const OrderTable = () => {
           }
         </>
       ),
+      text:""
     },
   ];
 
-  const detailedColums = [
+  const detailedColums:ColumnsProps[] = [
     {
       dataField: "photo",
       classes: "w-[90px] p-2",
@@ -179,22 +187,25 @@ const OrderTable = () => {
           />
         </>
       ),
+      text:""
     },
     {
       dataField: "title",
       classes: "w-[250px] p-2",
       formatter: (row: string) => <>{row}</>,
+      text:""
     },
     {
       dataField: "isNew",
       classes: "w-[120px] p-2",
-      formatter: (row: number) => (
+      formatter: (row: string) => (
         <>
-          <span className={`${row == 0 ? "text-[#dc5439]" : "text-[#cddc39]"}`}>
-            {row == 0 ? "Disable" : "Enable"}
+          <span className={`${Number(row) == 0 ? "text-[#dc5439]" : "text-[#cddc39]"}`}>
+            {Number(row) == 0 ? "Disable" : "Enable"}
           </span>
         </>
       ),
+      text:""
     },
     {
       dataField: "action",
@@ -202,6 +213,7 @@ const OrderTable = () => {
       formatter: () => (
         <TrashIcon className={""} fill={"#90a4ae"} width={20} height={20} />
       ),
+      text:""
     },
   ];
 

@@ -10,6 +10,7 @@ import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
 import { Button } from "../../components/Button/Button";
 import { PlusIcon } from "../../components/Icons/plus";
 import { useTranslation } from "next-i18next";
+import { ColumnsProps } from "../../shared/providers/types";
 
 
 const ProductTable = () => {
@@ -24,11 +25,12 @@ const ProductTable = () => {
     "NoteBook": 'NoteBook',
     "Monitors": 'Monitors'
   };
-  const columns: any[] = [
+  const columns: ColumnsProps[] = [
     {
       dataField: "title",
       classes: "w-[200px] p-2",
       formatter: (row: string) => <>{row}</>,
+      text: ' '
     },
     {
       dataField: "type",
@@ -36,8 +38,8 @@ const ProductTable = () => {
       formatter: (row: string) => <>{row}</>,
       filter: selectFilter({
         options: selectOptions,
-        onFilter: filterVal => console.log(`Filter Value: ${filterVal}`)
-      })
+      }),
+      text: ' '
     },
     {
       dataField: "guarantee",
@@ -60,6 +62,7 @@ const ProductTable = () => {
           </div>
         </>
       ),
+      text: ' '
     },
     {
       dataField: "price",
@@ -68,24 +71,25 @@ const ProductTable = () => {
         <>
           {row.map((rowData: any, indx: number) => {
               return (
-                <>
+                <div key={indx}>
                   <div className=""  key={rowData.symbol}>
                     <span>{ `${rowData.value}  ${rowData.symbol.replaceAll("USD", "$")}`}</span>
                   </div>
-                </>
+                </div>
               );
             
           })}
         </>
       ),
+      text: ' '
     },
     {
       dataField: "order",
       classes: "w-[90px] p-2",
       formatter: (row: string) => <>{row}</>,
+      text: ' '
     },
   ];
-  console.log(products);
 
   useEffect(() => {
     if (dispatch) {

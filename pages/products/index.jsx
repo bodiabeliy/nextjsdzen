@@ -7,7 +7,7 @@ const ProductScreen= dynamic(() => new Promise((resolve) => {
   setTimeout(() => resolve(import('../../widgets/ProductsScreen/ProductsScreen')), 1500);
 }), {
   loading: () => <Loader />,
-  ssr: true,
+  ssr: false,
 })
 
 const Products = () => {

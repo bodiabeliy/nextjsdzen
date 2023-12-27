@@ -1,5 +1,6 @@
 "use client"
 import BootstrapTable from 'react-bootstrap-table-next';
+import useIsElementMounted from '../../shared/hooks/isElementMounted';
 
 interface TableProps {
  
@@ -13,7 +14,6 @@ interface TableProps {
 
 const TableComponent = (props:TableProps) => {
     const {tableColumns, tableData, selectRow, caption, classes, filter} = props
-    
     return (
 
         <>

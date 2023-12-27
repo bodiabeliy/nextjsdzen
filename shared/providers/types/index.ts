@@ -1,3 +1,7 @@
+import { CSSProperties } from "react";
+import { TableColumnFilterProps } from "react-bootstrap-table-next";
+import { SelectFilterProps } from "react-bootstrap-table2-filter";
+
 export default interface Order {
   id:number;
   title:string;
@@ -34,10 +38,14 @@ export interface ProductPrice {
 
 
 export interface ColumnsProps {
-  name:string;
-  index:number;
-  MdSize:any;
-  textAlign?:any;
-  cellAlign?:any
+  dataField: string,
+  text: string,
+  classes: string,
+  align?:string,
+  filter?:Partial<{ id: string; placeholder: string; className: string; defaultValue: any; style: CSSProperties; delay: number; getFilter: (filter: (value: any) => void | any[]) => void; onFilter: (filterValue: any) => void | any[]; }>,
+  formatter?: (row: string) => JSX.Element,
+  events?:{
+    onClick: (e: React.FormEvent<HTMLFormElement>, column: any, columnIndex: number, row: any, rowIndex: number) => void
+  }
 
 }
