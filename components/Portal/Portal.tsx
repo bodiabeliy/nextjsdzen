@@ -1,26 +1,44 @@
-import { useState } from 'react';
-import { createPortal } from 'react-dom';
+import { Dispatch, useState } from "react";
+import { createPortal } from "react-dom";
 import ModalContent from "../Modal/Modal";
-import { Button } from '../Button/Button';
+import { Button } from "../Button/Button";
 import TrashIcon from "../Icons/trash";
-import Order from '../../shared/providers/types';
+import Order from "../../shared/providers/types";
+import { useDispatch } from "react-redux";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 interface PoprtalProps {
-    order:Order
+  data: Order;
+  actionHanler:PayloadAction<number>
 }
-export default function Portal(props:PoprtalProps) {
-    const {order} = props
-
+export default function Portal(props: PoprtalProps) {
+  const { data, actionHanler } = props;
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+
+  const removeDataHendler = () => {    
+    dispatch(actionHanler);
+  };
   return (
     <>
       <Button onClick={() => setShowModal(true)}>
-      <TrashIcon className={"trashIcon"} fill={"#90a4ae"} width={20} height={20} />
+        <TrashIcon
+          className={"trashIcon"}
+          fill={"#90a4ae"}
+          width={20}
+          height={20}
+        />
       </Button>
-      {(showModal && order) && createPortal(
-        <ModalContent removeData={order} onClose={() => setShowModal(false)} />,
-        document.body
-      )}
+      {showModal &&
+        data &&
+        createPortal(
+          <ModalContent
+            removeData={data}
+            onClose={() => setShowModal(false)}
+            onRemove={() => removeDataHendler()}
+          />,
+          document.body
+        )}
     </>
   );
 }

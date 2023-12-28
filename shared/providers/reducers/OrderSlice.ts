@@ -39,12 +39,15 @@ export const orderState = createSlice({
     },
     getOrderUnit: (state, action: PayloadAction<Order>) => {      
       state.orderTitle = action.payload
+    },
+    removeOrderSuccess: (state, action: PayloadAction<number>) => {
+      state.orders = state.orders.filter((order:Order) => order.id !=action.payload)
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { gettingOrdersSuccess, getProductsByOrderSuccess, getOrderUnit} = orderState.actions
+export const { gettingOrdersSuccess, getProductsByOrderSuccess, getOrderUnit, removeOrderSuccess} = orderState.actions
 
 export const OrderSelector = (state:RootState) => state.OrderReducer.orders
 export const OrderUnitSelector = (state:RootState) => state.OrderReducer.orderTitle

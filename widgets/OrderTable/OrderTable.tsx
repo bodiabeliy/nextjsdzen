@@ -8,6 +8,7 @@ import {
   ProductsByOrderSelector,
   getOrderUnit,
   getProductsByOrderSuccess,
+  removeOrderSuccess,
 } from "../../shared/providers/reducers/OrderSlice";
 import { useSelector } from "react-redux";
 import getOrders from "../../shared/services/Orders";
@@ -133,7 +134,7 @@ const OrderTable = () => {
           openRemoveModal(rowIndex);
         },
       },
-      formatter: () => <Portal order={orderData} />,
+      formatter: () => <Portal data={orderData} actionHanler={removeOrderSuccess(orderData.id)} />,
       text:""
     },
     {
