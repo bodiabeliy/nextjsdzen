@@ -185,7 +185,7 @@ const OrderTable = () => {
     {
       dataField: "photo",
       classes: "w-[90px] p-2",
-      formatter: (row: any) => (
+      formatter: (row: string) => (
         <>
           <Image
             className="p-1"
