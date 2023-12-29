@@ -1,3 +1,5 @@
 {
-    "products":"Products"
+    "products":"Products",
+    "start":"start",
+    "end":"end"
 }

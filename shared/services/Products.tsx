@@ -3,13 +3,14 @@ import http from './api/index';
 import { AppDispatch } from '../providers/store';
 import { gettingProductsSuccess } from '../providers/reducers/ProductSlice';
 
-export default async function getProducts(dispatch:AppDispatch) {
+export default async function getProducts(dispatch:AppDispatch, currentLanguge:string) {
+        
     try {        
-        const response = await http.get(`api/products`);
+        const response = await http.get(`/api/products`);
         dispatch(gettingProductsSuccess(response.data))
         
     } catch (error) {
-       throw Error(`heppend error by getting orders!  ${error}`) 
+       throw Error(`heppend error by getting products!  ${error}`) 
     }
      
  }

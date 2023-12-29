@@ -1,0 +1,9 @@
+{
+    "sessions":"Sessions:",
+    "productLink":"Products",
+    "orderLink":"Orders",
+    "loader":"Loading...",
+    "modalConfirmationText":"Are you sure delete is order?",
+    "modalConfirmationCancel":"Cancel",
+    "modalConfirmationRemove":"Remove"
+}

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import Loader from '../widgets/Loader/loading';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
  
 
 interface HomeScreenProps {
@@ -13,9 +14,20 @@ const HomeScreen= dynamic<HomeScreenProps>(() => new Promise((resolve) => {
   ssr: false,
 })
 
+export async function getStaticProps({ locale }:any) {  
+return {
+  props: {
+    ...(await serverSideTranslations((locale) as string, [
+    "common", "home"
+    ], null, ['en', 'ua'])),
+  },
+}
+}
+
 
 
 export default function Home() {
+
  
   return (
     <>

@@ -1,6 +1,7 @@
 
 import dynamic from 'next/dynamic'
 import Loader from "../../widgets/Loader/loading"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
   
   
 interface ProductScreenProps {
@@ -13,6 +14,16 @@ const ProductScreen= dynamic<ProductScreenProps>(() => new Promise((resolve) => 
   loading: () => <Loader />,
   ssr: false,
 })
+
+export async function getStaticProps({ locale }:any) {  
+  return {
+    props: {
+      ...(await serverSideTranslations((locale) as string, [
+      "common", "products"
+      ], null, ['en', 'ua'])),
+    },
+  }
+}
 const Products = () => {
     
     return ( 

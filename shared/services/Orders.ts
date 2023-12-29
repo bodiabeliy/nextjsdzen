@@ -5,7 +5,7 @@ import { AppDispatch } from '../providers/store';
 
 export default async function getOrders(dispatch:AppDispatch) {
     try {        
-        const response = await http.get(`api/orders`);
+        const response = await http.get(`/api/orders`);
         dispatch(gettingOrdersSuccess(response.data))
         
     } catch (error) {

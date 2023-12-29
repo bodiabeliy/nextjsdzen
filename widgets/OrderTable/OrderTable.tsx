@@ -29,8 +29,11 @@ import TableHeader from "../TableHeader/TableHeader";
 import { PlusIcon } from "../../components/Icons/plus";
 import Order, { ColumnsProps, Product, ProductPrice } from "../../shared/providers/types";
 import { SelectRowProps } from "react-bootstrap-table-next";
+import { useTranslation } from "next-i18next";
 
 const OrderTable = () => {
+  const {t} = useTranslation("orders")
+
   const dispatch = useAppDispatch();
   const orders = useSelector(OrderSelector);
   const orderData = useSelector(OrderUnitSelector);
@@ -69,7 +72,7 @@ const OrderTable = () => {
         <>
           <div className="">
             <p className="text-xl">{row.length}</p>
-            <span>Products</span>
+            <span>{t("orderByProducts")}</span>
           </div>
         </>
       ),
@@ -203,7 +206,7 @@ const OrderTable = () => {
       formatter: (row: string) => (
         <>
           <span className={`${Number(row) == 0 ? "text-[#dc5439]" : "text-[#cddc39]"}`}>
-            {Number(row) == 0 ? "Disable" : "Enable"}
+            {Number(row) == 0 ? `${t("isNotEnable")}` : `${t("isEnable")}`}
           </span>
         </>
       ),
@@ -251,7 +254,7 @@ const OrderTable = () => {
             <Button className="bg-[#8bc34a] rounded-full w-[25px] h-[25px] mr-2 p-4 border-4 border-[#87bd4a]">
                    <PlusIcon className={"scale-125 translate-y-[-10px] translate-x-[-12px]"} fill={"white"} width={32} height={32} />
             </Button>
-            <h2 className="font-semibold text-2xl">Orders: / {orders.length}</h2>
+            <h2 className="font-semibold text-2xl">{t("orders")}: / {orders.length}</h2>
 
             </div>
         </Button>

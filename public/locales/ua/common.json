@@ -1,0 +1,9 @@
+{
+    "sessions":"К-ть сесій:",
+    "productLink":"Продукти",
+    "orderLink":"Замовлення",
+    "loader":"Завантаження...",
+    "modalConfirmationText":"Ви дійсно бажаєте видплити дане замовлення?",
+    "modalConfirmationCancel":"Відмінити",
+    "modalConfirmationRemove":"Видалити"
+}

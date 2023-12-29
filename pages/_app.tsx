@@ -14,6 +14,7 @@ interface AppProps {
   pageProps:any
 }
 
+
  function App({ Component, pageProps }:AppProps) {
   const storeRef = useRef<Store<unknown, AnyAction>|null>(null)
   if (!storeRef.current) {

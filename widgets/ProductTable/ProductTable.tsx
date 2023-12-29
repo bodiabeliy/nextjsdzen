@@ -11,6 +11,7 @@ import { Button } from "../../components/Button/Button";
 import { PlusIcon } from "../../components/Icons/plus";
 import { useTranslation } from "next-i18next";
 import { ColumnsProps, Product, ProductPrice } from "../../shared/providers/types";
+import { useRouter } from "next/router";
 
 
 const ProductTable = () => {
@@ -18,6 +19,7 @@ const ProductTable = () => {
   const products = useSelector(ProductSelector);
   const filteredProductsCounter = useSelector(FilteredProductsLengthSelector)
 
+  const {locale} = useRouter()
   
   const {t} = useTranslation("products")
 
@@ -48,13 +50,13 @@ const ProductTable = () => {
         <>
           <div className="">
             <p className="text-center">
-              Start: <br />
+              {t("start")}: <br />
               <span className="font-bold">
                 {DateTimeFormmater(row.start).monthByMonths}
               </span>
             </p>
             <p className="text-center">
-              End: <br />
+            {t("end")}: <br />
               <span className="font-bold">
                 {DateTimeFormmater(row.start).transformedDate}
               </span>
@@ -92,8 +94,8 @@ const ProductTable = () => {
   ];
 
   useEffect(() => {
-    if (dispatch) {
-      getProducts(dispatch);
+    if (dispatch && locale) {
+      getProducts(dispatch, locale);
     }
   }, []);
 
