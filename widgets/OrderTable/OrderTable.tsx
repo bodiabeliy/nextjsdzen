@@ -66,6 +66,8 @@ const OrderTable = () => {
       text:""
     },
     {
+      // dataField represents both the column name and the property object in the unit (not avialable to change) -
+      // is the cause of the error in the console log: (Encountered two children with the same key, `products`)
       dataField: "products",
       classes: "w-[80px] p-2",
       formatter: (row: string) => (
@@ -95,7 +97,9 @@ const OrderTable = () => {
       text:""
     },
     {
-      dataField: "products",
+      // dataField represents both the column name and the property object in the unit (not avialable to change) -
+      // is the cause of the error in the console log: (Encountered two children with the same key, `products`)
+      dataField: "products", 
       classes: `w-[200px] p-2 ${isExpendMenu == true ? "hidden" : "block"}`,
       align: "center",
       formatter: (row: any) =>
