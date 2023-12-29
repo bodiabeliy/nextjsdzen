@@ -10,7 +10,7 @@ import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
 import { Button } from "../../components/Button/Button";
 import { PlusIcon } from "../../components/Icons/plus";
 import { useTranslation } from "next-i18next";
-import { ColumnsProps, Product, ProductPrice } from "../../shared/providers/types";
+import { ColumnsProps, DatePeriod, Product, ProductPrice } from "../../shared/providers/types";
 import { useRouter } from "next/router";
 
 
@@ -46,7 +46,7 @@ const ProductTable = () => {
     {
       dataField: "guarantee",
       classes: "w-[190px] p-2",
-      formatter: (row: any) => (
+      formatter: (row: DatePeriod|string|any) => (
         <>
           <div className="">
             <p className="text-center">
@@ -69,7 +69,7 @@ const ProductTable = () => {
     {
       dataField: "price",
       classes: "w-[120px] p-2",
-      formatter: (row: any) => (
+      formatter: (row: ProductPrice|string|any) => (
         <>
           {row.map((rowData: ProductPrice, indx: number) => {
               return (

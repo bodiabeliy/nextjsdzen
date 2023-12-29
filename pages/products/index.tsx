@@ -15,7 +15,7 @@ const ProductScreen= dynamic<ProductScreenProps>(() => new Promise((resolve) => 
   ssr: false,
 })
 
-export async function getStaticProps({ locale }:any) {  
+export async function getStaticProps({locale}:any) {  
   return {
     props: {
       ...(await serverSideTranslations((locale) as string, [

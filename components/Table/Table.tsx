@@ -1,15 +1,14 @@
 import BootstrapTable, { SelectRowProps } from 'react-bootstrap-table-next';
-import Order, { ColumnsProps, Product } from '../../shared/providers/types';
-import { FilterFactoryProps } from 'react-bootstrap-table2-filter';
+import Order, { ColumnsProps, Product, SelectProductProps } from '../../shared/providers/types';
 
 interface TableProps {
  
   tableColumns:ColumnsProps[];
   tableData:Order[] |Product[]
-  selectRow?:SelectRowProps<any> 
+  selectRow?:SelectRowProps<SelectProductProps> 
   caption?:JSX.Element
   classes?:string
-  filter?:any
+  filter?:unknown
 }
 
 const TableComponent = (props:TableProps) => {

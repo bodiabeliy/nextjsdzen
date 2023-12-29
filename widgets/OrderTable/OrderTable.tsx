@@ -102,7 +102,7 @@ const OrderTable = () => {
       dataField: "products", 
       classes: `w-[200px] p-2 ${isExpendMenu == true ? "hidden" : "block"}`,
       align: "center",
-      formatter: (row: any) =>
+      formatter: (row: string |any) =>
         row.map((x: Product, indx: number) => {
           if (indx == 0) {
             return (

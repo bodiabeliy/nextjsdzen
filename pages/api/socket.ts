@@ -1,7 +1,7 @@
 import type { Server as HTTPServer } from 'http'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Socket as NetSocket } from 'net'
-import { Server, type Server as IOServer } from 'socket.io'
+import { Server, type Server as IOServer, Socket } from 'socket.io'
 
 enum UserEventNameEnum {
   userEvent = "users",
@@ -24,11 +24,10 @@ export default function SocketHandler(_:NextApiRequest, res:NextApiResponseWithS
   } else {
     const io = new Server<SocketServer >(res.socket.server);
     res.socket.server.io = io;
-    io.on("connection", (socket:any) => {
+    io.on("connection", (socket:Socket) => {
         socket.broadcast.emit(UserEventNameEnum.userEvent, (io.engine.clientsCount));
         socket.on('disconnect', () => {
           socket.broadcast.emit(UserEventNameEnum.userEvent, (io.engine.clientsCount));
-
         });
     });
   }

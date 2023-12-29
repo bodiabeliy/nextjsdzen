@@ -1,3 +1,4 @@
+import { DateProps } from "../../providers/types";
 
 
 const monthNuberToMonthString = (currentMonthNumber:string):string |undefined => {
@@ -41,7 +42,9 @@ const monthNuberToMonthString = (currentMonthNumber:string):string |undefined =>
         } 
     }
 }
-export const DateTimeFormmater =(date:string):any => {
+
+
+export const DateTimeFormmater =(date:string):DateProps => {
     let formatDate= date.replaceAll("-","/").split(" ")[0]
 
     let parts = formatDate.split('/');

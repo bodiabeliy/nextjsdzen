@@ -2,9 +2,10 @@ import { ReactNode } from "react";
 import { Button } from "../../components/Button/Button";
 import {PlusIcon} from "../../components/Icons/plus"
 import { useTranslation } from "next-i18next";
+import Order from "../../shared/providers/types";
 
 interface TableHeaderProps {
-    title:any;
+    title:Order;
 }
 const TableHeader = (props:TableHeaderProps) => {
     const {title}=props

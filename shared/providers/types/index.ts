@@ -22,7 +22,7 @@ export interface Product {
   date:string;
 }
 
-interface DatePeriod {
+export interface DatePeriod {
  start:string;
  end:string;
 }
@@ -33,7 +33,17 @@ export interface ProductPrice {
   symbol:string;
   isDefault:number
 }
+
+export interface SelectProductProps {
+  mode: string;
+  clickToSelect?: boolean;
+}
  
+export interface DateProps {
+  transformedDate:string,
+  monthByMonths:string
+}
+
 
 
 export interface ColumnsProps {
@@ -41,7 +51,7 @@ export interface ColumnsProps {
   text: string,
   classes: string,
   align?:string,
-  filter?:Partial<{ id: string; placeholder: string; className: string; defaultValue: any; style: CSSProperties; delay: number; getFilter: (filter: (value: any) => void | any[]) => void; onFilter: (filterValue: any) => void | any[]; }>,
+  filter?:Partial<{ id: string; placeholder: string; className: string; defaultValue: string; style: CSSProperties; delay: number; getFilter: (filter: (value: any) => void | any[]) => void; onFilter: (filterValue: any) => void | any[]; }>,
   formatter?: (row: string) => JSX.Element,
   events?:{
     onClick: (e: React.FormEvent<HTMLFormElement>, column: any, columnIndex: number, row: any, rowIndex: number) => void
