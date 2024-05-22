@@ -1,19 +1,21 @@
-**Локальне розгортання проекту:**
-Для розгортання необхідно виконати наступні дії:
+**Local deployment of the project:**.
+To deploy, you need to perform the following steps:
 
-1) клонувати даний проект;
-2) Перейти в папку nextjs-socket.io та встановити модулі за допомогою команди npm і --force;
-3) Запустити фейкове бекенд API командою json-server --watch db.json --port 4000;
-4) Запустити проект в режимі девелопменту командою npm run dev;
+1) Clone this project;
+2) Go to the nextjs-socket.io folder and install the modules using the npm command and --force;
+3) Run the fake backend API with the command json-server --watch db.json --port 4000;
+4) Run the project in development mode with the npm run dev command;
 
 
 ### User Guide:
-- При першому вході на платформу, користувач потрапляє на головну сторінку, на якій розміщено наступну інформацію:
-1) Навігаційна панель (Navbar), на якій зображено поточну дату та час, кількість користувачів що одночасно знаходяться на платфомі та надпис поточної мови;
-2) Бокова панель (Sidebar) - список посилань для переходу на сторінки замовлень та продуктів;
-3) Головна сторінка - основний структурний блок взаємодії з користувачем;
+- When you first log in to the platform, the user is taken to the main page, which contains the following information:
+1) The Navbar, which shows the current date and time, the number of users simultaneously on the platform, and the current language;
+2) Sidebar - a list of links to go to the order and product pages;
+3) Home page - the main structural unit of user interaction;
 
-- На голоіній сторінці (HomeScreen) представлено назву даної сторінки.
+- The HomeScreen displays the name of the page.
 
-- При натисканні на посилання з відповідною назвою сторінки (Products/Orders) - користувач потрапляє на дану сторінку.
+- By clicking on the link with the corresponding page name (Products/Orders), the user is taken to this page.
 
+
+Translated with DeepL.com (free version)
