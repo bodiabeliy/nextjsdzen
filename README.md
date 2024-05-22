@@ -16,6 +16,3 @@ To deploy, you need to perform the following steps:
 - The HomeScreen displays the name of the page.
 
 - By clicking on the link with the corresponding page name (Products/Orders), the user is taken to this page.
-
-
-Translated with DeepL.com (free version)
